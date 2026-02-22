@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { SiGithub, SiLinkedin, SiLeetcode } from 'react-icons/si';
-import { Mail, Send, Terminal, Cpu, GraduationCap, MapPin } from 'lucide-react';
+import { Mail, Send, Terminal, Cpu, GraduationCap, MapPin, Code2 } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
 import SectionHeader from '@/components/SectionHeader';
@@ -236,7 +236,7 @@ export default function Portfolio() {
               name="shubham-mokashi" 
               platform="LinkedIn" 
               icon={SiLinkedin} 
-              url="#" 
+              url="https://www.linkedin.com/in/shubham-mokashi-985902333/" 
               color="#0077B5" 
             />
             <SocialCard 
@@ -244,7 +244,7 @@ export default function Portfolio() {
               name="shubham_code" 
               platform="GitHub" 
               icon={SiGithub} 
-              url="#" 
+              url="https://github.com/SHUBHAM-MOKASHI" 
               color="#ffffff" 
             />
             <SocialCard 
@@ -252,7 +252,7 @@ export default function Portfolio() {
               name="shubham_dev" 
               platform="LeetCode" 
               icon={SiLeetcode} 
-              url="#" 
+              url="https://leetcode.com/u/shubham_m37/" 
               color="#FFA116" 
             />
           </div>
