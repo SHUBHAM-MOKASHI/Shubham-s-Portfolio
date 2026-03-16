@@ -11,11 +11,16 @@ interface SkillBadgeProps {
 export default function SkillBadge({ name, icon: Icon, color, index }: SkillBadgeProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+      whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      transition={{ 
+        delay: index * 0.05, 
+        type: "spring", 
+        stiffness: 260, 
+        damping: 20 
+      }}
+      whileHover={{ y: -5, scale: 1.05, transition: { duration: 0.2 } }}
       className="flex flex-col items-center justify-center p-4 rounded-2xl bg-secondary/30 border border-white/5 hover:border-white/10 hover:bg-secondary/50 transition-all cursor-default group"
     >
       <div 

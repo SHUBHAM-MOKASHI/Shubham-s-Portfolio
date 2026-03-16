@@ -7,14 +7,29 @@ import { Button } from '@/components/ui/button';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Determine active section
+      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+      let current = '';
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && window.scrollY >= element.offsetTop - 150) {
+          current = section;
+        }
+      }
+      if (current !== activeSection && current !== '') {
+        setActiveSection(current);
+      }
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const navLinks = [
     { name: 'About', to: 'about' },
@@ -52,8 +67,17 @@ export default function Navbar() {
               smooth={true}
               duration={500}
               offset={-70}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+              className={`relative px-3 py-1.5 text-sm font-medium transition-colors cursor-pointer ${
+                activeSection === link.to ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
+              {activeSection === link.to && (
+                <motion.div
+                  layoutId="navbar-active"
+                  className="absolute inset-0 bg-primary/10 rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
               {link.name}
             </Link>
           ))}

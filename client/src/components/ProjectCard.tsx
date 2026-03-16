@@ -17,6 +17,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      className="h-full"
     >
       <Card className="glass-card h-full flex flex-col overflow-hidden group border-0 bg-secondary/20">
         <div className="relative h-48 overflow-hidden">

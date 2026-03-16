@@ -17,10 +17,16 @@ export default function SocialCard({ name, platform, icon: Icon, url, color, ind
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -30, filter: 'blur(10px)' }}
+      whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+      transition={{ 
+        delay: index * 0.1, 
+        type: "spring", 
+        stiffness: 200, 
+        damping: 20 
+      }}
+      whileHover={{ scale: 1.02 }}
       className="block group"
     >
       <div className="glass-card p-6 rounded-2xl flex items-center justify-between group-hover:-translate-y-1 transition-transform">
